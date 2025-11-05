@@ -1,0 +1,10 @@
+apiVersion: runtime.agentic-layer.ai/v1alpha1
+kind: ToolServer
+metadata:
+  name: news-fetcher
+spec:
+  protocol: mcp
+  transportType: http
+  image: eu.gcr.io/agentic-layer/news-fetcher:0.0.2
+  port: 8000
+  replicas: 1
