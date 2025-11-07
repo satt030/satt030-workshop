@@ -290,16 +290,13 @@ Try these tasks to deepen your understanding:
 
 ### Inspect Agent Definitions
 
-View the full configuration of the News Agent:
-```bash
-kubectl get agent news-agent -n showcase-news -o yaml
-```
+View the full configuration of the [News Agent](showcase-news/news-agent.yaml)
 
 Notice the following sections:
 - `spec.description`: Explains the agent's purpose
 - `spec.instruction`: The system prompt that defines the agent's behavior
 - `spec.model`: The LLM model being used (gemini-2.5-flash)
-- `spec.subAgents`: References to other agents (the Summarizer)
+- `spec.subAgents`: References other agents (the Summarizer)
 - `spec.tools`: References to MCP ToolServers
 - `spec.protocols`: Supported communication protocols (A2A)
 
