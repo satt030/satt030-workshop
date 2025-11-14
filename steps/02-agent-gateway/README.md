@@ -228,34 +228,8 @@ This demonstrates:
 - The News Agent uses MCP tools and delegates to the Summarizer Agent
 - The response is translated back to OpenAI format
 
-### Test 2: Direct Agent Access via Gateway
-
-You can also access agents directly through the gateway using A2A protocol:
-
-```bash
-curl http://localhost:8080/agents/news-agent \
-  -H "Content-Type: application/json" \
-  -d '{
-    "jsonrpc": "2.0",
-    "id": 1,
-    "method": "message/send",
-    "params": {
-      "message": {
-        "role": "user",
-        "parts": [
-          {
-            "kind": "text",
-            "text": "What is happening in AI this week?"
-          }
-        ],
-        "messageId": "test-001",
-        "contextId": "test-context-001"
-      },
-      "metadata": {}
-    }
-  }' | jq
-```
-
+> [!TIP]
+> Compare the two API styles! In Step 01, you had to provide `contextId`, `messageId`, and use the A2A JSON-RPC format. Now with the Agent Gateway's OpenAI-compatible API, you can use the simpler messages array format.
 
 ## Understanding Gateway Routing
 
