@@ -88,8 +88,12 @@ kubectl get crd | grep agentic-layer.ai
 
 You should see:
 ```
+agentgatewayclasses.runtime.agentic-layer.ai
 agentgateways.runtime.agentic-layer.ai
+agenticworkforces.runtime.agentic-layer.ai
 agents.runtime.agentic-layer.ai
+aigatewayclasses.runtime.agentic-layer.ai
+aigateways.runtime.agentic-layer.ai
 toolservers.runtime.agentic-layer.ai
 ```
 
@@ -129,6 +133,11 @@ kubectl get agents -n showcase-news
 Deploy the LGTM monitoring stack (Loki, Grafana, Tempo, Mimir):
 ```bash
 kubectl apply -k steps/01-agentic-layer-runtime/monitoring/
+```
+
+Wait for the LGTM deployment to be ready:
+```bash
+kubectl wait --for=condition=Available --timeout=120s -n monitoring deployment/lgtm
 ```
 
 The monitoring stack provides:
