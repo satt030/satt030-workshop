@@ -209,7 +209,7 @@ kubectl port-forward -n showcase-news service/agent-gateway 8004:8000 &
 The Agent Gateway provides an OpenAI-compatible interface for interacting with agents:
 
 ```bash
-curl http://localhost:8080/v1/chat/completions \
+curl http://localhost:8004/news-agent/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "news-agent",
