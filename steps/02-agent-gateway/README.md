@@ -196,7 +196,15 @@ Open WebUI is now accessible at: http://localhost:3000
 
 ## Test the Agent Gateway
 
-### Test 1: Query via OpenAI-Compatible API
+Setup a port-forward.
+
+```bash
+kubectl port-forward -n showcase-news service/agent-gateway 8004:8000 &
+```
+
+(todo: check port)
+
+### Query via OpenAI-Compatible API
 
 The Agent Gateway provides an OpenAI-compatible interface for interacting with agents:
 
@@ -294,3 +302,4 @@ Currently, your agents are hardcoded to use specific models (e.g., gemini-2.5-fl
 - Use multiple LLM providers
 - Implement fallback strategies
 - Track and optimize LLM costs
+
