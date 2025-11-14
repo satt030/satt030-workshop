@@ -26,6 +26,11 @@ spec:
             # No API key needed when using Agent Gateway
             - name: OPENAI_API_KEY
               value: "not-needed"
+            # Disable authentication for workshop - allows immediate access without login
+            - name: WEBUI_AUTH
+              value: "False"
+            - name: ENABLE_VERSION_UPDATE_CHECK
+              value: "False"
           volumeMounts:
             - name: data
               mountPath: /app/backend/data
@@ -34,13 +39,13 @@ spec:
               memory: "256Mi"
               cpu: "100m"
             limits:
-              memory: "512Mi"
+              memory: "1Gi"
               cpu: "500m"
           readinessProbe:
             httpGet:
               path: /health
               port: 8080
-            initialDelaySeconds: 10
+            initialDelaySeconds: 15
             periodSeconds: 5
           livenessProbe:
             httpGet:
