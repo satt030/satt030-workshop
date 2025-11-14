@@ -299,6 +299,9 @@ kubectl logs -f -n showcase-news deployment/news-agent
 3. Find the trace for your request
 4. Examine the spans to see each step of the workflow
 
+> [!TIP]
+> Try modifying the News Agent's system prompt to change its behavior. Edit the agent's `spec.instruction` field ask it to respond in a different style (e.g., more concise, in a specific language, or with a particular focus), then re-apply the manifest. Observe how the agent's behavior changes.
+
 ---
 
 ## What's Next?
