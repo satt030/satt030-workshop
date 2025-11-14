@@ -150,19 +150,19 @@ This creates:
 
 Wait for the gateway to be ready:
 ```bash
-kubectl wait --for=condition=Ready --timeout=120s -n showcase-news agentgateway/my-agent-gateway
+kubectl wait --for=condition=Ready --timeout=120s -n showcase-news agentgateway/agent-gateway
 ```
 
 View the gateway pods:
 ```bash
-kubectl get pods -n showcase-news -l app=my-agent-gateway
+kubectl get pods -n showcase-news -l app=agent-gateway
 ```
 
 ### Step 4: Set Up Access to the Gateway
 
 Set up port forwarding to access the gateway:
 ```bash
-kubectl port-forward -n showcase-news service/my-agent-gateway 8080:10000 &
+kubectl port-forward -n showcase-news service/agent-gateway 8080:10000 &
 ```
 
 The gateway is now accessible at: http://localhost:8080/
@@ -275,7 +275,7 @@ curl http://localhost:8080/agents/news-agent \
 Check which agents the gateway has discovered by viewing the generated KrakenD configuration:
 
 ```bash
-k get configmap my-agent-gateway-krakend-config -n showcase-news -o jsonpath='{.data.krakend\.json}' | jq .endpoints
+k get configmap agent-gateway-krakend-config -n showcase-news -o jsonpath='{.data.krakend\.json}' | jq .endpoints
 ```
 
 ---

@@ -4,7 +4,7 @@ metadata:
   labels:
     app.kubernetes.io/name: agent-gateway-krakend-operator
     app.kubernetes.io/managed-by: kustomize
-  name: my-agent-gateway
+  name: agent-gateway
   namespace: showcase-news
 spec:
   agentGatewayClassName: krakend  # Optional: specify controller responsibility
