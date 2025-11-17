@@ -45,7 +45,7 @@ kubectl wait --for=condition=Available --timeout=60s -n ai-gateway-litellm-syste
 ### Step 2: Deploy AI Gateway
 
 ```bash
-kubectl apply -f ./steps/03-ai-gateway/agentic-layer
+kubectl apply -k ./steps/03-ai-gateway/agentic-layer
 ```
 
 Wait for the AI Gateway to be ready:
@@ -65,6 +65,8 @@ kubectl apply -k steps/03-ai-gateway/showcase-news
 ```
 
 Compare the workload definitions in steps/03-ai-gateway/showcase-news with steps/01-agentic-layer-runtime/showcase-news. What do you notice?
+
+
 
 > [!TIP]
 > Test the AI Gateway's model access control! First, query the news-agent successfully. Then, edit the AiGateway configuration to remove the `gemini-1.5-pro` model from the `aiModels` list. Try querying the news-agent again - you should see it fail because the AI Gateway is now blocking access to that model. This demonstrates how you can control which models are available to your agents centrally.
