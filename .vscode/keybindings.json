@@ -1,0 +1,10 @@
+[
+    {
+        "key": "ctrl+alt+s", // Or your preferred shortcut
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "${selectedText}\n"
+        },
+        "when": "editorHasSelection"
+    }
+]
