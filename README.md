@@ -41,6 +41,11 @@ ca. 17:00 Uhr: Ende
 - ~~Step 5: Setting up a Service Plane (WIP)~~
 - Step 6: (Bonus) GitOps
 
+# Link to the => [Miro](https://miro.com/app/board/uXjVJpTXfnE=/?share_link_id=152327591545) <=
+
+Passwort: (Wird im Workshop bekannt gegeben)
+---
+
 ## Setup
 
 1. Fork this repository
