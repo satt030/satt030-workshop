@@ -104,30 +104,8 @@ krakend   krakend      10s
 
 To make agents accessible through the gateway, they need to be marked as `exposed: true` in their spec.
 
-Create a patch file for the News Agent:
-```bash
-cat <<EOF > /tmp/news-agent-patch.yaml
-spec:
-  exposed: true
-EOF
-```
+Take a look at how we deployed the agents:
 
-Apply the patch:
-```bash
-kubectl patch agent news-agent -n showcase-news --patch-file /tmp/news-agent-patch.yaml --type merge
-```
-
-Do the same for the Summarizer Agent:
-```bash
-cat <<EOF > /tmp/summarizer-agent-patch.yaml
-spec:
-  exposed: true
-EOF
-
-kubectl patch agent summarizer-agent -n showcase-news --patch-file /tmp/summarizer-agent-patch.yaml --type merge
-```
-
-Verify the changes:
 ```bash
 kubectl get agent news-agent -n showcase-news -o jsonpath='{.spec.exposed}'
 kubectl get agent summarizer-agent -n showcase-news -o jsonpath='{.spec.exposed}'
@@ -150,7 +128,7 @@ This creates:
 
 Wait for the gateway to be ready:
 ```bash
-kubectl wait --for=condition=Ready --timeout=120s -n showcase-news agentgateway/agent-gateway
+kubectl wait --for=condition=Available --timeout=120s -n showcase-news deployment/agent-gateway
 ```
 
 View the gateway pods:
