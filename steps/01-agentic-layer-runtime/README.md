@@ -104,6 +104,8 @@ Deploy the news agent showcase application:
 kubectl apply -k steps/01-agentic-layer-runtime/showcase-news
 ```
 
+If you get an error like `failed calling webhook`, keep trying.
+
 This creates:
 - A namespace `showcase-news`
 - A News Agent that coordinates news retrieval and summarization
