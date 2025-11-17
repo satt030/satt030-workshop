@@ -24,3 +24,5 @@ flux bootstrap github \
 - Ensures cluster state matches repository state
 - Enables GitOps workflows for all subsequent installations
 
+> [!TIP]
+> Try to apply the Agents and ToolServer using gitops.
