@@ -22,6 +22,7 @@ spec:
     - Contact the summarizer agent to generate a summary
     - Present the summary to the user
   model: "gemini/gemini-2.5-flash"
+  exposed: true
   subAgents:
     - name: summarizer_agent
       url: "http://summarizer-agent:8000/.well-known/agent-card.json"
@@ -41,6 +42,8 @@ spec:
       value: news-agent
     - name: AGENT_OTEL_ENABLED
       value: "true"
+    - name: LITELLM_PROXY_API_BASE
+      value: "http://ai-gateway-litellm.showcase-news.svc.cluster.local:4000"
   envFrom:
     - secretRef:
         name: api-key-secrets
