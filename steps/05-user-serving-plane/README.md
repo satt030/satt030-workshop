@@ -24,6 +24,7 @@ helm install librechat oci://ghcr.io/danny-avila/librechat-chart/librechat --val
 
 5. Open a port-forward and talk to the models!
 
+And yes, you will need to register with a fake email first.
 
 ---
 
