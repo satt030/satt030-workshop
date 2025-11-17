@@ -2,6 +2,7 @@ apiVersion: runtime.agentic-layer.ai/v1alpha1
 kind: ToolServer
 metadata:
   name: news-fetcher
+  namespace: showcase-news
 spec:
   protocol: mcp
   transportType: http

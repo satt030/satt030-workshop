@@ -2,6 +2,7 @@ apiVersion: runtime.agentic-layer.ai/v1alpha1
 kind: Agent
 metadata:
   name: news-agent
+  namespace: showcase-news
 spec:
   framework: google-adk
   image: ghcr.io/agentic-layer/agent-template-adk:0.4.0
@@ -22,6 +23,7 @@ spec:
     - Contact the summarizer agent to generate a summary
     - Present the summary to the user
   model: "gemini/gemini-2.5-flash"
+  exposed: true
   subAgents:
     - name: summarizer_agent
       url: "http://summarizer-agent:8000/.well-known/agent-card.json"

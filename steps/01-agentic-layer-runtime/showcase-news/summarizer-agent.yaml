@@ -2,6 +2,7 @@ apiVersion: runtime.agentic-layer.ai/v1alpha1
 kind: Agent
 metadata:
   name: summarizer-agent
+  namespace: showcase-news
 spec:
   framework: google-adk
   image: ghcr.io/agentic-layer/agent-template-adk:0.4.0
