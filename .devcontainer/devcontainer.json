@@ -1,5 +1,14 @@
 {
   // ...
-  "build": { "dockerfile": "Dockerfile" },
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bierner.markdown-mermaid"
+      ]
+    }
+  },
   // ...
 }
