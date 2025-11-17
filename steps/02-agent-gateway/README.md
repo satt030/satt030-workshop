@@ -96,8 +96,8 @@ kubectl get agentgatewayclasses
 
 You should see:
 ```
-NAME      CONTROLLER   AGE
-krakend   krakend      10s
+NAME                                     CONTROLLER                                                  AGE
+agent-gateway-krakend-operator-krakend   runtime.agentic-layer.ai/agent-gateway-krakend-controller   84m
 ```
 
 ### Step 2: Update Agents to Enable Exposure
@@ -111,7 +111,8 @@ kubectl get agent news-agent -n showcase-news -o jsonpath='{.spec.exposed}'
 kubectl get agent summarizer-agent -n showcase-news -o jsonpath='{.spec.exposed}'
 ```
 
-Both should output: `true`. If not, change the agents until they do!
+Currently, the agents are not marked as "exposed" to the agent gateway, which means it's not allowed to connect to them.
+Change the `news-agent` to be exposed.
 
 ### Step 3: Deploy the Agent Gateway
 
@@ -147,7 +148,7 @@ kubectl port-forward -n showcase-news service/agent-gateway 8004:10000 &
 
 ### Query via OpenAI-Compatible API
 
-The Agent Gateway provides an OpenAI-compatible interface for interacting with agents:
+The Agent Gateway provides a nearly-OpenAI-compatible interface for interacting with agents:
 
 ```bash
 curl http://localhost:8004/news-agent/chat/completions \
@@ -170,7 +171,7 @@ This demonstrates:
 - The response is translated back to OpenAI format
 
 > [!TIP]
-> Compare the two API styles! In Step 01, you had to provide `contextId`, `messageId`, and use the A2A JSON-RPC format. Now with the Agent Gateway's OpenAI-compatible API, you can use the simpler messages array format.
+> Compare the two API styles! In Step 01, you had to provide `contextId`, `messageId`, and use the A2A JSON-RPC format. Now with the Agent Gateway's OpenAI-compatible API, you can use the simpler messages array format (and don't have to fake a contextID).
 
 ## Understanding Gateway Routing
 
@@ -198,8 +199,32 @@ This demonstrates:
 Check which agents the gateway has discovered by viewing the generated KrakenD configuration:
 
 ```bash
-k get configmap agent-gateway-krakend-config -n showcase-news -o jsonpath='{.data.krakend\.json}' | jq .endpoints
+kubectl get configmap agent-gateway-krakend-config -n showcase-news -o jsonpath='{.data.krakend\.json}' | jq .endpoints
 ```
+
+```json
+[
+  {
+    "endpoint": "/news-agent",
+    "output_encoding": "no-op",
+    "method": "POST",
+    "backend": [
+      {
+        "host": [
+          "http://news-agent.showcase-news.svc.cluster.local:8000"
+        ],
+        "url_pattern": ""
+      }
+    ]
+  }
+]
+```
+
+WHOOPS! It's empty.
+
+The agent-gateway-operator is still being developed and doesn't yet "Watch" the agents. Delete the ConfigMap to have it be recreated. Then run the `kubectl get configmap` command again.
+
+Next, try sending a request to one of the Agent Gateway's endpoints.
 
 ---
 
