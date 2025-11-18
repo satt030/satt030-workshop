@@ -161,13 +161,13 @@ The observability dashboard:
 
 ### Step 5: Set Up Access
 
-Set up port forwarding to access the services locally:
+Set up individual port forwarding to access the services locally:
 ```bash
-kubectl port-forward -n showcase-news service/news-agent 8001:8000 & \
-    kubectl port-forward -n showcase-news service/summarizer-agent 8002:8000 & \
-    kubectl port-forward -n showcase-news service/news-fetcher 8003:8000 & \
-    kubectl port-forward -n observability-dashboard service/observability-dashboard 8100:8000 & \
-    kubectl port-forward -n monitoring service/lgtm 3000:3000 &
+kubectl port-forward -n showcase-news service/news-agent 8001:8000 &
+kubectl port-forward -n showcase-news service/summarizer-agent 8002:8000 &
+kubectl port-forward -n showcase-news service/news-fetcher 8003:8000 &
+kubectl port-forward -n observability-dashboard service/observability-dashboard 8100:8000 &
+kubectl port-forward -n monitoring service/lgtm 3000:3000 &
 ```
 
 **Note**: The `&` runs each command in the background. Keep the terminal open to maintain the port forwards.
