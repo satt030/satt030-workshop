@@ -22,6 +22,9 @@ RUN curl -sL https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_
     && mv /tmp/k9s /usr/local/bin/ \
     && chmod +x /usr/local/bin/k9s
 
+# Install Helm
+RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash
+
 # Verify installations
 RUN kubectl version --client && \
     flux --version && \
