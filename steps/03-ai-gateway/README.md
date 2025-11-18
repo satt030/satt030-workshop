@@ -51,7 +51,7 @@ kubectl apply -k ./steps/03-ai-gateway/agentic-layer
 Wait for the AI Gateway to be ready:
 
 ```bash
-kubectl wait --for=condition=Available --timeout=120s -n ai-gateway deployment/ai-gateway-litellm
+kubectl wait --for=condition=Available --timeout=120s -n showcase-news deployment/ai-gateway-litellm
 ```
 
 ### Step 3: Modify agents to use the AI gateway.
