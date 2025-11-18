@@ -38,7 +38,7 @@ ca. 17:00 Uhr: Ende
 - Step 2: Provisioning of Agent Gateways
 - Step 3: Provisioning of AI Gateways
 - ~~Step 4: Setting up a Quality Plane (WIP)~~
-- ~~Step 5: Setting up a Service Plane (WIP)~~
+- Step 5: Setting up a Service Plane
 - Step 6: (Bonus) GitOps
 
 # Link to the => [Miro](https://miro.com/app/board/uXjVJpTXfnE=/?share_link_id=152327591545) <=
